@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --void: #05060e;  --void-2: #0a0c1a;
+  --ink: #eef0fb;   --ink-dim: #a2a7c4;  --dim: #676c88;
+  --line: rgba(180,190,255,.10);  --line-2: rgba(180,190,255,.18);
+  --sun: #ffc861;
 }
 
 @theme inline {
