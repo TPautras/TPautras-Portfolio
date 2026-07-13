@@ -35,7 +35,6 @@ html {
 }
 
 body {
-  background: var(--void);
   color: var(--ink);
   font-family: var(--body);
   line-height: 1.65;
