@@ -12,8 +12,13 @@ export type Skill = { label: string; level?: number }; // level 0..1 → longueu
 
 export type Project = {
   title: string;
+  slug: string;
   stack: string[];
   description: string;
+  problem: string;
+  approach: string[];
+  metrics: { label: string; value: string }[];
+  finding?: { value: string; caption: string };
   href?: string; // démo / site en ligne
   repo?: string; // dépôt GitHub
   year?: string;
@@ -44,6 +49,7 @@ export type SectionContent = {
   headline: string; // titre de la section
   summary: string; // 1-2 phrases (survol planète + carte)
   accent: string; // couleur d'accent (hex) réutilisée en 3D ET en carte
+  star: { x: number; y: number }
 };
 
 export type Planet = {
@@ -83,37 +89,51 @@ export const PLANETS: Planet[] = [
       headline: "Projets",
       summary: "Ce que je construis quand on me laisse un clavier et du temps libre.",
       accent: "#4f9dde",
+      star: {
+        x: 0,
+        y: 0
+      }
     },
     orbit: { radius: 8, size: 0.9, speed: 0.22, tilt: 0.05, texture: "/textures/earth.jpg" },
     projects: [
       {
         title: "OrbitFolio — ce portfolio",
         stack: ["Next.js", "React Three Fiber", "TypeScript", "Tailwind"],
-        description:
-          "Landing page en système solaire interactif : orbites simulées à la main, " +
+        slug: "orbitfolio",
+
+        description: "Landing page en système solaire interactif : orbites simulées à la main, " +
           "perturbations gravitationnelles au passage d'astéroïdes, fallback en cartes sur mobile.",
         repo: "https://github.com/moncompte/orbitfolio",
         href: "https://mon-domaine.dev",
         year: "2026",
+        problem: "",
+        approach: [],
+        metrics: []
       },
       {
         title: "Station météo LoRa autonome",
         stack: ["C", "STM32", "FreeRTOS", "LoRaWAN"],
-        description:
-          "Capteur basse consommation alimenté par panneau solaire, transmission LoRa " +
+        description: "Capteur basse consommation alimenté par panneau solaire, transmission LoRa " +
           "toutes les 15 min, autonomie supérieure à 6 mois sur batterie.",
         repo: "https://github.com/moncompte/lora-weather",
         year: "2025",
+        slug: "",
+        problem: "",
+        approach: [],
+        metrics: []
       },
       {
         title: "Pathfinding visualizer",
         stack: ["React", "Canvas", "algorithmes"],
-        description:
-          "Outil pédagogique qui anime A*, Dijkstra et BFS sur une grille éditable, " +
+        description: "Outil pédagogique qui anime A*, Dijkstra et BFS sur une grille éditable, " +
           "réalisé pour un exposé en théorie des graphes.",
         repo: "https://github.com/moncompte/pathviz",
         href: "https://pathviz.mon-domaine.dev",
         year: "2025",
+        slug: "",
+        problem: "",
+        approach: [],
+        metrics: []
       },
     ],
   },
@@ -125,6 +145,10 @@ export const PLANETS: Planet[] = [
       headline: "Expériences",
       summary: "Stages, associatif et jobs où j'ai appris pour de vrai.",
       accent: "#e0662b",
+      star: {
+        x: 0,
+        y: 0
+      }
     },
     orbit: { radius: 12, size: 1.1, speed: 0.15, tilt: 0.03, texture: "/textures/mars.jpg" },
     experiences: [
@@ -162,6 +186,10 @@ export const PLANETS: Planet[] = [
       headline: "Compétences",
       summary: "Les outils que je manie, du plus solide au « je m'y mets ».",
       accent: "#8b6fc9",
+      star: {
+        x: 0,
+        y: 0
+      }
     },
     orbit: { radius: 16, size: 1.4, speed: 0.1, tilt: 0.06, texture: "/textures/jupiter.jpg", ring: true },
     skills: [
@@ -211,6 +239,10 @@ export const PLANETS: Planet[] = [
       headline: "Me contacter",
       summary: "Un stage, un projet, une question ? Le signal met peu de temps à arriver.",
       accent: "#3fb7a5",
+      star: {
+        x: 0,
+        y: 0
+      }
     },
     orbit: { radius: 20, size: 0.7, speed: 0.07, tilt: 0.04, texture: "/textures/neptune.jpg" },
     links: [
