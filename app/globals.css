@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+:root {
+  --void: #05060e;
+  --void-2: #0a0c1a;
+  --panel: rgba(148, 163, 255, 0.035);
+  --panel-2: rgba(148, 163, 255, 0.06);
+
+  --line: rgba(180, 190, 255, 0.10);
+  --line-2: rgba(180, 190, 255, 0.18);
+
+  --ink: #eef0fb;
+  --ink-dim: #a2a7c4;
+  --dim: #676c88;
+
+  --sun: #ffc861;
+  --spec-proj: #7db4ff;
+  --spec-exp: #ff8360;
+  --spec-skill: #b98bff;
+  --spec-contact: #47d6c0;
+
+  --display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --body: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --mono: var(--font-mono), ui-monospace, "SF Mono", monospace;
+
+  --wrap: 440px;
+
+  --r-card: 14px;
+  --r-pill: 999px;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--sun) 30%, transparent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120% 80% at 78% 8%, rgba(125, 180, 255, 0.10), transparent 55%),
+    radial-gradient(90% 70% at 12% 42%, rgba(185, 139, 255, 0.10), transparent 55%),
+    radial-gradient(120% 90% at 60% 100%, rgba(71, 214, 192, 0.07), transparent 60%),
+    var(--void);
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.constellation {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin: 8px auto 32px;
+  overflow: visible;
+}
+
+.cst-edge {
+  opacity: 0.5;
+  animation: breathe 7s ease-in-out infinite;
+}
+
+.cst-sun {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 7px var(--sun));
+  animation: float 5s ease-in-out infinite;
+}
+
+.cst-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 5px currentColor);
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.cst-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.12;
+  transform: scale(0.6);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.cst-star:hover .cst-dot,
+.cst-star:focus-visible .cst-dot {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.cst-star:hover .cst-halo,
+.cst-star:focus-visible .cst-halo {
+  opacity: 0.22;
+  transform: scale(1);
+}
+
+.cst-star:focus-visible {
+  outline: none;
+}
+
+.cst-label {
+  fill: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  opacity: 0.75;
+  paint-order: stroke;
+  stroke: var(--void);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  transition: opacity 0.25s ease;
+}
+
+.cst-star:hover .cst-label,
+.cst-star:focus-visible .cst-label {
+  opacity: 1;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 22px;
+  position: relative;
+}
+.wrap--wide {
+  --wrap: 520px;
+}
+
+@keyframes breathe { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.9; } }          
+@keyframes travel  { to { stroke-dashoffset: -680; } }                            
+@keyframes float   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes fall    { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(6px); opacity: 1; } }
+@keyframes trace   { to { stroke-dashoffset: 0; } }                              
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
