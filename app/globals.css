@@ -79,6 +79,16 @@ body {
   height: auto;
   margin: 8px auto 32px;
   overflow: visible;
+  touch-action: manipulation;
+}
+
+.cst-star {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cst-hit {
+  fill: transparent;
+  pointer-events: all;
 }
 
 .cst-edge {
@@ -108,14 +118,14 @@ body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.cst-star:hover .cst-dot,
-.cst-star:focus-visible .cst-dot {
+.cst-star:focus-visible .cst-dot,
+.cst-star:active .cst-dot {
   transform: scale(1.3);
   filter: drop-shadow(0 0 10px currentColor);
 }
 
-.cst-star:hover .cst-halo,
-.cst-star:focus-visible .cst-halo {
+.cst-star:focus-visible .cst-halo,
+.cst-star:active .cst-halo {
   opacity: 0.22;
   transform: scale(1);
 }
@@ -138,9 +148,23 @@ body {
   transition: opacity 0.25s ease;
 }
 
-.cst-star:hover .cst-label,
-.cst-star:focus-visible .cst-label {
+.cst-star:focus-visible .cst-label,
+.cst-star:active .cst-label {
   opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cst-star:hover .cst-dot {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  .cst-star:hover .cst-halo {
+    opacity: 0.22;
+    transform: scale(1);
+  }
+  .cst-star:hover .cst-label {
+    opacity: 1;
+  }
 }
 
 .wrap {
