@@ -37,5 +37,5 @@ export function Starfield() {
     return () => { cancelAnimationFrame(raf); removeEventListener("resize", resize); };
   }, []);
 
-  return <canvas ref={ref} aria-hidden className="fixed inset-0 -z-10" />;
+  return <canvas ref={ref} aria-hidden className="fixed inset-0 -z-10 pointer-events-none" />;
 }

@@ -40,7 +40,7 @@ export default function Constellation({
             tabIndex={0}
             aria-label={`Aller à ${s.label}`}
             style={{ color: s.accent, cursor: "pointer" }}
-            onClick={() => onSelect(s.id)}
+            onPointerUp={() => onSelect(s.id)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
@@ -48,6 +48,7 @@ export default function Constellation({
               }
             }}
           >
+            <circle className="cst-hit" cx={s.star.x} cy={s.star.y} r={22} />
             <circle className="cst-halo" cx={s.star.x} cy={s.star.y} r={11} fill="currentColor" />
             <circle className="cst-dot" cx={s.star.x} cy={s.star.y} r={5} fill="currentColor" />
             <text

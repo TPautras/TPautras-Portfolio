@@ -23,7 +23,7 @@ export function PlanetCard({
       <button
         onClick={onToggle}
         aria-expanded={open}
-        className="flex w-full items-center gap-3 text-left"
+        className="flex w-full touch-manipulation items-center gap-3 text-left"
       >
         <span
           className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-lg"
