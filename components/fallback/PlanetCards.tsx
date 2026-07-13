@@ -1,14 +1,17 @@
-// components/fallback/PlanetCard.tsx
-// Rendu d'UNE section sous forme de carte dépliable (fallback mobile).
-// Générique : il affiche la bonne charge utile selon ce que contient la planète.
 "use client";
 
-import { useState } from "react";
 import type { Planet } from "@/lib/planets";
 import { Icon } from "../Atomic/Icon";
 
-export function PlanetCard({ planet }: { planet: Planet }) {
-  const [open, setOpen] = useState(false);
+export function PlanetCard({
+  planet,
+  open,
+  onToggle,
+}: {
+  planet: Planet;
+  open: boolean;
+  onToggle: () => void;
+}) {
   const { content } = planet;
 
   return (
@@ -17,9 +20,8 @@ export function PlanetCard({ planet }: { planet: Planet }) {
       className="scroll-mt-20 rounded-2xl border border-white/10 bg-black p-5 backdrop-blur"
       style={{ boxShadow: `0 0 40px -22px ${content.accent}` }}
     >
-      {/* En-tête : icône colorée + titre + résumé */}
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         aria-expanded={open}
         className="flex w-full items-center gap-3 text-left"
       >
@@ -47,7 +49,6 @@ export function PlanetCard({ planet }: { planet: Planet }) {
         </span>
       </button>
 
-      {/* Détail déplié */}
       {open && (
         <div className="mt-4 space-y-4">
           {planet.body && (

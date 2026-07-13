@@ -1,5 +1,3 @@
-//components/fallback/Starfield.tsx
-
 "use client";
 import { useEffect, useRef } from "react";
 
@@ -17,7 +15,7 @@ export function Starfield() {
     const resize = () => {
       W = cv.width = innerWidth * dpr;  H = cv.height = innerHeight * dpr;
       cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
-      const n = Math.round((innerWidth * innerHeight) / 5200); // densité par surface
+      const n = Math.round((innerWidth * innerHeight) / 5200);
       stars = Array.from({ length: n }, () => ({
         x: Math.random()*W, y: Math.random()*H, r: (Math.random()*1.1+0.3)*dpr,
         a: Math.random()*0.6+0.2, tw: Math.random()*0.02+0.004, ph: Math.random()*6.28,
@@ -27,7 +25,7 @@ export function Starfield() {
     const draw = (t: number) => {
       ctx.clearRect(0,0,W,H);
       for (const s of stars) {
-        const a = reduce ? s.a : s.a + Math.sin(t*s.tw + s.ph)*0.35; // scintillement
+        const a = reduce ? s.a : s.a + Math.sin(t*s.tw + s.ph)*0.35;
         ctx.globalAlpha = Math.max(0.05, Math.min(1, a));
         ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.2832); ctx.fillStyle = "#fff"; ctx.fill();
       }

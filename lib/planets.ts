@@ -1,14 +1,4 @@
-// lib/planets.ts
-// -----------------------------------------------------------------------------
-// SOURCE DE VÉRITÉ UNIQUE du portfolio.
-// La scène 3D, la navbar ET le fallback mobile (cartes) consomment ce seul
-// fichier. Ajouter une section = ajouter un objet dans PLANETS, rien d'autre.
-// Les contenus ci-dessous sont des exemples réalistes : remplace-les par les tiens.
-// -----------------------------------------------------------------------------
-
-// ---- Types -----------------------------------------------------------------
-
-export type Skill = { label: string; level?: number }; // level 0..1 → longueur de barre
+export type Skill = { label: string; level?: number };
 
 export type Project = {
   title: string;
@@ -19,8 +9,8 @@ export type Project = {
   approach: string[];
   metrics: { label: string; value: string }[];
   finding?: { value: string; caption: string };
-  href?: string; // démo / site en ligne
-  repo?: string; // dépôt GitHub
+  href?: string;
+  repo?: string;
   year?: string;
 };
 
@@ -31,39 +21,34 @@ export type Experience = {
   description: string;
 };
 
-// Ce qui décrit la planète DANS la scène 3D
 export type OrbitConfig = {
-  radius: number; // distance au soleil (unités de la scène)
-  size: number; // rayon de la planète
-  speed: number; // vitesse angulaire (rad/s) — plus petit = plus lent
-  tilt?: number; // inclinaison de l'orbite (radians)
-  texture: string; // chemin dans /public, ex: /textures/earth.jpg
-  ring?: boolean; // anneaux type Saturne
+  radius: number;
+  size: number;
+  speed: number;
+  tilt?: number;
+  texture: string;
+  ring?: boolean;
 };
 
-// Ce qui s'affiche (overlay 3D au clic + carte mobile)
 export type SectionContent = {
-  id: string; // ancre + route : /#projets ou /projets
-  label: string; // nom court (navbar + label planète)
-  icon: string; // nom d'icône (ex. Tabler / lucide) pour la carte mobile
-  headline: string; // titre de la section
-  summary: string; // 1-2 phrases (survol planète + carte)
-  accent: string; // couleur d'accent (hex) réutilisée en 3D ET en carte
+  id: string;
+  label: string;
+  icon: string;
+  headline: string;
+  summary: string;
+  accent: string;
   star: { x: number; y: number }
 };
 
 export type Planet = {
   content: SectionContent;
   orbit: OrbitConfig;
-  // Charge utile spécifique à la section (une seule des suivantes est remplie)
   body?: string;
   projects?: Project[];
   experiences?: Experience[];
   skills?: { group: string; items: Skill[] }[];
   links?: { label: string; href: string }[];
 };
-
-// ---- Le soleil = ton identité (centre de la scène) --------------------------
 
 export const SUN = {
   name: "Prénom Nom",
@@ -78,8 +63,6 @@ export const SUN = {
     "stage de fin d'études autour du logiciel embarqué ou du temps réel.",
 };
 
-// ---- Les planètes = les sections du site ------------------------------------
-
 export const PLANETS: Planet[] = [
   {
     content: {
@@ -90,8 +73,8 @@ export const PLANETS: Planet[] = [
       summary: "Ce que je construis quand on me laisse un clavier et du temps libre.",
       accent: "#4f9dde",
       star: {
-        x: 0,
-        y: 0
+        x: 66,
+        y: 50
       }
     },
     orbit: { radius: 8, size: 0.9, speed: 0.22, tilt: 0.05, texture: "/textures/earth.jpg" },
@@ -146,8 +129,8 @@ export const PLANETS: Planet[] = [
       summary: "Stages, associatif et jobs où j'ai appris pour de vrai.",
       accent: "#e0662b",
       star: {
-        x: 0,
-        y: 0
+        x: 252,
+        y: 58
       }
     },
     orbit: { radius: 12, size: 1.1, speed: 0.15, tilt: 0.03, texture: "/textures/mars.jpg" },
@@ -187,8 +170,8 @@ export const PLANETS: Planet[] = [
       summary: "Les outils que je manie, du plus solide au « je m'y mets ».",
       accent: "#8b6fc9",
       star: {
-        x: 0,
-        y: 0
+        x: 244,
+        y: 160
       }
     },
     orbit: { radius: 16, size: 1.4, speed: 0.1, tilt: 0.06, texture: "/textures/jupiter.jpg", ring: true },
@@ -240,8 +223,8 @@ export const PLANETS: Planet[] = [
       summary: "Un stage, un projet, une question ? Le signal met peu de temps à arriver.",
       accent: "#3fb7a5",
       star: {
-        x: 0,
-        y: 0
+        x: 72,
+        y: 164
       }
     },
     orbit: { radius: 20, size: 0.7, speed: 0.07, tilt: 0.04, texture: "/textures/neptune.jpg" },
@@ -254,5 +237,4 @@ export const PLANETS: Planet[] = [
   },
 ];
 
-// Pratique pour la navbar et le fallback : la liste des sections dans l'ordre.
 export const SECTIONS = PLANETS.map((p) => p.content);

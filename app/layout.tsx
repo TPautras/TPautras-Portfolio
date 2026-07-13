@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Cormorant, Manrope, Space_Mono } from "next/font/google";
 import "./globals.css";
