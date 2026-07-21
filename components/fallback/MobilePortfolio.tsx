@@ -5,6 +5,8 @@ import { PLANETS } from "@/lib/planets";
 import { PlanetCard } from "./PlanetCards";
 import { Starfield } from "./Starfield";
 import Constellation from "./Constellation";
+import HeroSection from "./HeroSection";
+import Footer from "./Footer";
 
 export default function MobilePortfolio() {
     const [openId, setOpenId] = useState<string | null>(null);
@@ -23,6 +25,7 @@ export default function MobilePortfolio() {
             <Starfield />
             <div className="wrap flex flex-col gap-4">
                 <Constellation onSelect={select} />
+                <HeroSection/>
                 {PLANETS.map((element) => (
                     <PlanetCard
                         key={element.content.id}
@@ -36,6 +39,7 @@ export default function MobilePortfolio() {
                     />
                 ))}
             </div>
+            <Footer/>
         </div>
     );
 }
