@@ -6,6 +6,7 @@ import { PlanetCard } from "./PlanetCards";
 import { Starfield } from "./Starfield";
 import Constellation from "./Constellation";
 import HeroSection from "./HeroSection";
+import Footer from "./Footer";
 
 export default function MobilePortfolio() {
     const [openId, setOpenId] = useState<string | null>(null);
@@ -38,6 +39,7 @@ export default function MobilePortfolio() {
                     />
                 ))}
             </div>
+            <Footer/>
         </div>
     );
 }
