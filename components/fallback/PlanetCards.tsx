@@ -173,6 +173,20 @@ export function PlanetCard({
               </article>
             ))}
 
+            {planet.education?.map((e) => (
+              <article
+                key={e.school + t(e.period, locale)}
+                className="border-l-2 pl-[18px]"
+                style={{ borderColor: accent }}
+              >
+                <h3 className="font-(family-name:--display) text-[1.24rem] font-semibold leading-tight text-(--ink)">
+                  {e.school} — {t(e.degree, locale)}
+                </h3>
+                <p className="mt-1 font-(family-name:--mono) text-[10px] text-(--dim)">{t(e.period, locale)}</p>
+                {e.detail && <p className="mt-2 text-sm text-(--ink-dim)">{t(e.detail, locale)}</p>}
+              </article>
+            ))}
+
             {planet.skills?.map((g) => {
               const group = t(g.group, locale);
               const leveled = g.items.some((s) => typeof s.level === "number");
