@@ -133,8 +133,8 @@ export const PLANETS: Planet[] = [
       icon: "tools",
       headline: { fr: "Projets", en: "Projects" },
       summary: {
-        fr: "Ce que je construis quand je pointe le télescope vers un jeu de données.",
-        en: "What I build when I point the telescope at a dataset.",
+        fr: "Mes projets principaux, construits sur mon temps libre ou lors de mes etudes.",
+        en: "My best projects, built during my free time, or during my studies.",
       },
       accent: "#7db4ff",
       star: { x: 58, y: 56 },
@@ -142,101 +142,178 @@ export const PLANETS: Planet[] = [
     orbit: { radius: 8, size: 0.9, speed: 0.22, tilt: 0.05, texture: "/textures/earth.jpg" },
     projects: [
       {
-        slug: "classifieur-de-galaxies",
-        title: { fr: "Classifieur de galaxies", en: "Galaxy classifier" },
+        slug: "traducteur-lsf",
+        title: {
+          fr: "Traducteur de langue des signes",
+          en: "Sign language translator",
+        },
         subtitle: {
-          fr: "Trier spirales, elliptiques et irrégulières à partir d'images de relevé.",
-          en: "Sorting spiral, elliptical and irregular galaxies from survey images.",
+          fr: "Traduire la langue des signes française en direct, depuis la webcam.",
+          en: "Translating French sign language live, from the webcam.",
         },
         summary: {
-          fr: "Réseau convolutif qui trie les galaxies par morphologie sur des images SDSS. 94 % d'exactitude.",
-          en: "Convolutional network sorting galaxies by morphology on SDSS images. 94% accuracy.",
+          fr: "Traducteur temps réel de langue des signes : MediaPipe extrait les points de la main, un modèle les classe, et le front React affiche la traduction image par image.",
+          en: "Real-time sign language translator: MediaPipe extracts hand landmarks, a model classifies them, and the React front shows the translation frame by frame.",
         },
-        stack: ["PyTorch", "CNN", "Python", "SDSS"],
-        year: "2025",
-        repo: "https://github.com/moncompte/galaxy-classifier",
-        data: "SDSS DR17",
-        role: { fr: "Solo", en: "Solo" },
-        status: { fr: "Terminé", en: "Completed" },
+        stack: ["MediaPipe", "Python", "React"],
         problem: {
-          fr: "Les grands relevés capturent des centaines de millions de galaxies. Les classer à la main ne passe pas à l'échelle, et les catalogues collaboratifs restent bruités.",
-          en: "Large surveys capture hundreds of millions of galaxies. Classifying them by hand doesn't scale, and crowd-sourced catalogs stay noisy.",
+          fr: "Communiquer avec les personnes sourdes ou malentendantes reste difficile sans interprète ; les outils temps réel accessibles depuis un simple navigateur manquent.",
+          en: "Communicating with deaf or hard-of-hearing people stays hard without an interpreter; real-time tools accessible from a plain browser are scarce.",
         },
         approach: [
           {
-            fr: "Extraction et recadrage de 60 000 imagettes étiquetées depuis Galaxy Zoo + SDSS.",
-            en: "Extracted and cropped 60,000 labeled thumbnails from Galaxy Zoo + SDSS.",
+            fr: "Capture webcam et extraction des points de la main et du corps avec MediaPipe.",
+            en: "Webcam capture and hand/body landmark extraction with MediaPipe.",
           },
           {
-            fr: "Augmentation de données (rotations, symétries) — une galaxie n'a pas d'orientation privilégiée.",
-            en: "Data augmentation (rotations, flips) — a galaxy has no preferred orientation.",
+            fr: "Classification des signes par un modèle entraîné sur des séquences de points.",
+            en: "Sign classification with a model trained on landmark sequences.",
           },
           {
-            fr: "Réseau convolutif compact entraîné avec early-stopping sur la perte de validation.",
-            en: "Compact convolutional network trained with early-stopping on validation loss.",
+            fr: "Front React qui affiche la traduction en direct.",
+            en: "React front rendering the translation live.",
           },
-          {
-            fr: "Calibration des probabilités pour transformer les scores en niveau de confiance exploitable.",
-            en: "Probability calibration to turn scores into usable confidence levels.",
-          },
-        ],
-        finding: {
-          value: "94%",
-          caption: {
-            fr: "d'exactitude sur le jeu de validation, à parité avec les votes humains agrégés sur les cas nets.",
-            en: "accuracy on the validation set, on par with aggregated human votes on clear-cut cases.",
-          },
-        },
-        metrics: [
-          { label: { fr: "F1 macro", en: "Macro F1" }, value: "0.92" },
-          { label: { fr: "Paramètres", en: "Parameters" }, value: "1.2 M" },
-          { label: { fr: "Inférence", en: "Inference" }, value: "3 ms" },
         ],
       },
       {
-        slug: "detecteur-de-transits",
-        title: { fr: "Détecteur de transits", en: "Transit detector" },
+        slug: "pharmatrack",
+        title: { fr: "PharmaTrack", en: "PharmaTrack" },
         subtitle: {
-          fr: "Repérer des exoplanètes candidates dans les courbes de lumière Kepler.",
-          en: "Spotting candidate exoplanets in Kepler light curves.",
+          fr: "Prédire l'effet et les effets secondaires d'un médicament, patient par patient.",
+          en: "Predicting a drug's effect and side effects, patient by patient.",
         },
         summary: {
-          fr: "Pipeline qui détecte les baisses de luminosité périodiques signalant une exoplanète.",
-          en: "Pipeline detecting the periodic brightness dips that signal an exoplanet.",
+          fr: "Application web qui personnalise la pharmacocinétique par apprentissage automatique : à partir du profil, des ressentis et de signaux de wearables, elle prédit quand un médicament agit et quand ses effets s'estompent.",
+          en: "Web app personalizing pharmacokinetics with machine learning: from profile, feedback and wearable signals, it predicts when a drug kicks in and when its effects fade.",
         },
-        stack: ["NumPy", "pandas", "scikit-learn", "astropy"],
+        stack: ["Python", "Machine Learning", "TypeScript", "React"],
         year: "2025",
-        repo: "https://github.com/moncompte/transit-detector",
-        data: "Kepler",
-        role: { fr: "Solo", en: "Solo" },
+        repo: "https://github.com/TPautras/Software-Engineering-Hanyang",
+        href: "https://youtu.be/b3dNrxpm3H8",
+        role: { fr: "En équipe", en: "Team" },
         status: { fr: "Terminé", en: "Completed" },
         problem: {
-          fr: "// À compléter : le problème que ce projet résout.",
-          en: "// TODO: the problem this project solves.",
+          fr: "Les modèles pharmacocinétiques standards visent un patient « moyen » et capturent mal la variabilité entre individus.",
+          en: "Standard pharmacokinetic models target an \"average\" patient and poorly capture inter-individual variability.",
         },
         approach: [
-          { fr: "// Étape 1", en: "// Step 1" },
-          { fr: "// Étape 2", en: "// Step 2" },
+          {
+            fr: "Intégration de quatre sources : données PK classiques, profil biométrique, ressentis subjectifs et signaux de capteurs portés.",
+            en: "Integrated four sources: classic PK data, biometric profile, subjective feedback and wearable bio-signals.",
+          },
+          {
+            fr: "Modèle d'apprentissage produisant des prédictions temporelles de l'efficacité et des effets indésirables.",
+            en: "Learning model producing time-series predictions of efficacy and adverse effects.",
+          },
+          {
+            fr: "Interface web pour visualiser les fenêtres thérapeutiques et planifier sa journée.",
+            en: "Web interface to visualize therapeutic windows and plan one's day.",
+          },
+        ],
+      },
+      {
+        slug: "remodelun",
+        title: { fr: "RemodelUN", en: "RemodelUN" },
+        subtitle: {
+          fr: "Préparer un Model United Nations avec une équipe d'agents IA.",
+          en: "Preparing a Model United Nations with a team of AI agents.",
+        },
+        summary: {
+          fr: "Pipeline multi-agents (CrewAI) qui automatise la préparation d'un MUN : recherche de documents, génération d'une fiche de synthèse et résumé de la position officielle d'un pays.",
+          en: "Multi-agent pipeline (CrewAI) automating MUN prep: document research, cheat-sheet generation and a summary of a country's official position.",
+        },
+        stack: ["Python", "CrewAI", "LLM"],
+        year: "2025",
+        repo: "https://github.com/TPautras/RemodelUN",
+        role: { fr: "Solo", en: "Solo" },
+        problem: {
+          fr: "Préparer un MUN demande de longues heures de recherche documentaire et de synthèse manuelle.",
+          en: "Preparing for a MUN takes long hours of document research and manual synthesis.",
+        },
+        approach: [
+          {
+            fr: "Agents IA spécialisés orchestrés avec CrewAI, chacun avec un rôle (recherche, synthèse, position).",
+            en: "Specialized AI agents orchestrated with CrewAI, each with a role (research, synthesis, position).",
+          },
+          {
+            fr: "Outil de recherche web personnalisé pour collecter des sources fiables.",
+            en: "Custom web-research tool to gather reliable sources.",
+          },
+          {
+            fr: "Génération d'une cheat sheet structurée et d'un résumé de la position du pays.",
+            en: "Generation of a structured cheat sheet and a country-position summary.",
+          },
+        ],
+      },
+      {
+        slug: "livin-paris",
+        title: { fr: "Livin'Paris", en: "Livin'Paris" },
+        subtitle: {
+          fr: "Une appli de livraison de repas, du schéma de base de données aux graphes du métro.",
+          en: "A food-delivery app, from the database schema to the metro graphs.",
+        },
+        summary: {
+          fr: "Application type UberEats en C#/.NET : conception d'une base de données relationnelle, requêtes SQL, et calcul d'itinéraires dans le métro parisien par algorithmes de graphes.",
+          en: "UberEats-style app in C#/.NET: relational database design, SQL queries, and Paris-metro routing via graph algorithms.",
+        },
+        stack: ["C#", ".NET", "SQL"],
+        year: "2025",
+        repo: "https://github.com/TPautras/Livin-Paris2",
+        role: { fr: "En équipe", en: "Team" },
+        status: { fr: "Terminé", en: "Completed" },
+        problem: {
+          fr: "Relier clients, restaurants et livreurs tout en calculant le trajet le plus court dans le réseau du métro.",
+          en: "Connecting customers, restaurants and couriers while computing the shortest path across the metro network.",
+        },
+        approach: [
+          {
+            fr: "Modélisation et peuplement d'une base de données relationnelle avec requêtes SQL.",
+            en: "Modeled and populated a relational database with SQL queries.",
+          },
+          {
+            fr: "Bibliothèque de graphes maison pour représenter le métro et calculer les plus courts chemins.",
+            en: "In-house graph library to represent the metro and compute shortest paths.",
+          },
+          {
+            fr: "Application C#/.NET reliant commandes, utilisateurs et livraisons.",
+            en: "C#/.NET app tying together orders, users and deliveries.",
+          },
         ],
       },
       {
         slug: "orbitfolio",
-        title: { fr: "OrbitFolio — ce portfolio", en: "OrbitFolio — this portfolio" },
+        title: { fr: "OrbitFolio: ce portfolio", en: "OrbitFolio: this portfolio" },
         subtitle: {
           fr: "Un système solaire interactif modélisé dans le navigateur.",
           en: "An interactive solar system modeled in the browser.",
         },
         summary: {
-          fr: "Système solaire interactif ; cette page en est la version mobile.",
-          en: "Interactive solar system; this page is its mobile version.",
+          fr: "Système solaire interactif construit avec React Three Fiber ; cette page en est la version mobile, bilingue avec next-intl.",
+          en: "Interactive solar system built with React Three Fiber; this page is its mobile, next-intl-powered bilingual version.",
         },
-        stack: ["Next.js", "React Three Fiber", "TypeScript"],
+        stack: ["Next.js", "React Three Fiber", "TypeScript", "next-intl"],
         year: "2026",
-        href: "https://mon-domaine.dev",
-        repo: "https://github.com/moncompte/orbitfolio",
+        href: "https://tpautras.fr",
+        repo: "https://github.com/TPautras/TPautras-Portfolio",
         role: { fr: "Solo", en: "Solo" },
         status: { fr: "En cours", en: "Ongoing" },
-        problem: { fr: "// À compléter.", en: "// TODO." },
+      },
+      {
+        slug: "dotfiles",
+        title: { fr: "Ma configuration NixOS", en: "My NixOS configuration"},
+        subtitle: {
+          fr: "Une configuration linux declarative, modulaire et faite avec amour, utilisee quotidiennement",
+          en: "A declarative and modular linux configuration, crafted with love and daily driven",
+        },
+        summary: {
+          fr: "Ce projet utilise la distribution NixOS pour faire une configuration entierement customisee, afin d'etre le plus efficace possible. Elle utilise le language Nix, Hyprland, lua et d'autres languages de configuration.",
+          en: "This projecct uses the NixOS ditro in order to make an entirely custom configuration, in order to be as efficient as possible. This project leverages the Nix language, as well as lua and other configuration languages"
+        },
+        stack: ["Nix", "lua"],
+        year: "2026",
+        repo: "https://github.com/TPautras/dotfiles",
+        role: { fr: "Solo", en: "Solo" },
+        status: { fr: "En cours", en: "Ongoing"}
       },
     ],
   },
@@ -400,13 +477,13 @@ export const PLANETS: Planet[] = [
       },
       {
         label: { fr: "GitHub", en: "GitHub" },
-        href: "https://github.com/moncompte",
-        value: { fr: "@moncompte", en: "@moncompte" },
+        href: "https://github.com/TPautras",
+        value: { fr: "@TPautras", en: "@TPautras" },
       },
       {
         label: { fr: "LinkedIn", en: "LinkedIn" },
-        href: "https://linkedin.com/in/moncompte",
-        value: { fr: "/in/moncompte", en: "/in/moncompte" },
+        href: "https://www.linkedin.com/in/thomas-pautras-215a4a28b/",
+        value: { fr: "in/thomas-pautras-215a4a28b/", en: "in/thomas-pautras-215a4a28b/" },
       },
       {
         label: { fr: "CV", en: "Resume" },
