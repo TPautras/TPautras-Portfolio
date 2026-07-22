@@ -7,6 +7,7 @@ import { Starfield } from "./Starfield";
 import Constellation from "./Constellation";
 import HeroSection from "./HeroSection";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function MobilePortfolio() {
     const [openId, setOpenId] = useState<string | null>(null);
@@ -22,6 +23,7 @@ export default function MobilePortfolio() {
 
     return (
         <div className="w-full h-full">
+            <Navbar/>
             <Starfield />
             <div className="wrap flex flex-col gap-4">
                 <Constellation onSelect={select} />
