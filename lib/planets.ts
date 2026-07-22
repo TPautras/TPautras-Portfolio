@@ -374,8 +374,8 @@ export const PLANETS: Planet[] = [
       icon: "school",
       headline: { fr: "Formation", en: "Education" },
       summary: {
-        fr: "Là où j'ai appris à penser en systèmes et en probabilités.",
-        en: "Where I learned to think in systems and probabilities.",
+        fr: "L'ensemble de mes formations, finies et en cours.",
+        en: "All of my education, ongoing and finished.",
       },
       accent: "#7ecb8f",
       star: { x: 160, y: 32 },
@@ -384,26 +384,53 @@ export const PLANETS: Planet[] = [
     education: [
       {
         degree: {
-          fr: "Cycle ingénieur — spécialité Data & IA",
-          en: "Engineering degree — Data & AI major",
+          fr: "Cycle ingénieur - majeure Data & IA",
+          en: "Engineering degree - Data & AI major",
         },
-        school: "École d'ingénieurs XYZ",
-        period: { fr: "2022 – 2025 (attendu)", en: "2022 – 2025 (expected)" },
-        location: "Paris, France",
+        school: "Ecole Superieure d'Ingenieur Leonard De Vinci (ESILV)",
+        period: { fr: "2023 - 2028 (attendu)", en: "2023 – 2028 (expected)" },
+        location: "Nanterre, France",
         detail: {
-          fr: "Cours clés : apprentissage automatique, statistiques bayésiennes, systèmes distribués, traitement du signal.",
-          en: "Key courses: machine learning, Bayesian statistics, distributed systems, signal processing.",
+          fr: "Cours cles: Programmation Orientee Objet, Statistiques, Machine Learning",
+          en: "Key courses: machine learning, statistics, object oriented programming ",
         },
       },
       {
-        degree: { fr: "Classes préparatoires MP", en: "MP preparatory classes" },
-        school: "Lycée XYZ",
-        period: { fr: "2020 – 2022", en: "2020 – 2022" },
+        degree: { fr: "Master en management", en: "Master in management" },
+        school: "Ecole de Management Leonard De Vinci (EMLV)",
+        period: { fr: "2023 - 2028", en: "2023 - 2028" },
         detail: {
-          fr: "Mathématiques, physique et informatique intensives.",
-          en: "Intensive mathematics, physics and computer science.",
+          fr: "Cours cles: Vente et Demarche commerciale, comptabilite, management interculturel",
+          en: "Key classes: Sales, accounting, intercultural management",
         },
       },
+      {
+        degree: { fr: "Etudiant en Echange", en: "Exchange student" },
+        school: "Hanyang University",
+        period: { fr: "automne 2026", en: "fall 2026" },
+        detail: {
+          fr: "Echange dans la 4 eme universite de coree, cours sur l'analyse de serie temporelle et en machine learning",
+          en: "Exchange in the fourth best university in South Korea, class in Time Series Analysis and Machine Learning",
+        },
+      },
+      {
+        degree: { fr: "Licence en Sciences de l'Ingenieur", en: "Bachelor in Engineering" },
+        school: "Universite de Nanterre",
+        period: { fr: "2023 - 2026", en: "2023 - 2026" },
+        detail: {
+          fr: "Cours pratique, approche par l'experimentation.",
+          en: "Practical engineering classes, hands-on approach."
+        },
+      },
+      {
+        degree: { fr: "Baccalaureat mention tres bien", en: "Baccalaureate with honors"},
+        school: "Lycee le Bon Sauveur",
+        period: { fr: "2020 - 2023", en: "2020 - 2023" },
+        detail: {
+          fr: "Specialite Mathematique et Physique Chimie, option latin et Mathematiques expertes",
+          en: "Major in maths, physics and chemistry, minor in latin and expert mathematics",
+        },
+      },   
     ],
   },
 
