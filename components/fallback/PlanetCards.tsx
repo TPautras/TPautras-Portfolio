@@ -1,20 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Planet } from "@/lib/planets";
+import { t, type Locale, type Planet } from "@/lib/planets";
 
 export function PlanetCard({
   planet,
+  locale,
   open,
   onToggle,
 }: {
   planet: Planet;
+  locale: Locale;
   open: boolean;
   onToggle: () => void;
 }) {
   const { content } = planet;
   const accent = content.accent;
   const panelId = `d-${content.id}`;
+
+  const label = t(content.label, locale);
+  const headline = t(content.headline, locale);
 
   const ref = useRef<HTMLElement>(null);
   const [seen, setSeen] = useState(false);
@@ -35,11 +40,11 @@ export function PlanetCard({
   }, []);
 
   const meta = planet.projects
-    ? `${planet.projects.length} objets catalogués`
+    ? `${planet.projects.length} ${locale === "fr" ? "objets catalogués" : "catalogued objects"}`
     : planet.experiences
-    ? `${planet.experiences.length} entrées de journal`
+    ? `${planet.experiences.length} ${locale === "fr" ? "entrées de journal" : "log entries"}`
     : planet.skills
-    ? `${planet.skills.length} bandes mesurées`
+    ? `${planet.skills.length} ${locale === "fr" ? "bandes mesurées" : "measured bands"}`
     : null;
 
   return (
@@ -81,18 +86,18 @@ export function PlanetCard({
         </span>
 
         <span className="min-w-0 flex-1">
-          {content.label !== content.headline && (
+          {label !== headline && (
             <span
               className="block font-(family-name:--mono) text-[10.5px] font-bold uppercase tracking-[0.16em]"
               style={{ color: accent }}
             >
-              {content.label}
+              {label}
             </span>
           )}
           <span className="block font-(family-name:--display) text-[2.15rem] font-semibold leading-none tracking-[-0.01em] text-(--ink)">
-            {content.headline}
+            {headline}
           </span>
-          <span className="mt-3 block text-sm text-(--ink-dim)">{content.summary}</span>
+          <span className="mt-3 block text-sm text-(--ink-dim)">{t(content.summary, locale)}</span>
           {meta && (
             <span className="mt-3 block font-(family-name:--mono) text-[10.5px] uppercase tracking-[0.08em] text-(--dim)">
               <span style={{ color: accent }}>◆</span> {meta}
@@ -117,17 +122,17 @@ export function PlanetCard({
         <div className="overflow-hidden" inert={!open}>
           <div className="space-y-6 pt-6">
             {planet.body && (
-              <p className="text-sm leading-relaxed text-(--ink-dim)">{planet.body}</p>
+              <p className="text-sm leading-relaxed text-(--ink-dim)">{t(planet.body, locale)}</p>
             )}
 
             {planet.projects?.map((p) => (
               <article
-                key={p.title}
+                key={p.slug}
                 className="border-t border-(--line) pt-4 first:border-t-0 first:pt-0"
               >
                 <div className="flex items-baseline justify-between gap-2">
                   <h3 className="font-(family-name:--display) text-[1.28rem] font-semibold text-(--ink)">
-                    {p.title}
+                    {t(p.title, locale)}
                   </h3>
                   {p.year && (
                     <span className="font-(family-name:--mono) text-[10px] text-(--dim)">
@@ -135,14 +140,14 @@ export function PlanetCard({
                     </span>
                   )}
                 </div>
-                <p className="mt-1.5 text-sm text-(--ink-dim)">{p.description}</p>
+                <p className="mt-1.5 text-sm text-(--ink-dim)">{t(p.summary, locale)}</p>
                 <p className="mt-2 font-(family-name:--mono) text-[10px] tracking-[0.05em] text-(--dim)">
                   {p.stack.join(" · ")}
                 </p>
                 <div className="mt-2.5 flex gap-4 text-xs font-semibold">
                   {p.href && (
                     <a href={p.href} className="underline underline-offset-2" style={{ color: accent }}>
-                      Démo →
+                      {locale === "fr" ? "Démo →" : "Demo →"}
                     </a>
                   )}
                   {p.repo && (
@@ -156,24 +161,25 @@ export function PlanetCard({
 
             {planet.experiences?.map((e) => (
               <article
-                key={e.role + e.org}
+                key={e.org + t(e.period, locale)}
                 className="border-l-2 pl-[18px]"
                 style={{ borderColor: accent }}
               >
                 <h3 className="font-(family-name:--display) text-[1.24rem] font-semibold leading-tight text-(--ink)">
-                  {e.role} — {e.org}
+                  {t(e.role, locale)} — {e.org}
                 </h3>
-                <p className="mt-1 font-(family-name:--mono) text-[10px] text-(--dim)">{e.period}</p>
-                <p className="mt-2 text-sm text-(--ink-dim)">{e.description}</p>
+                <p className="mt-1 font-(family-name:--mono) text-[10px] text-(--dim)">{t(e.period, locale)}</p>
+                <p className="mt-2 text-sm text-(--ink-dim)">{t(e.description, locale)}</p>
               </article>
             ))}
 
             {planet.skills?.map((g) => {
+              const group = t(g.group, locale);
               const leveled = g.items.some((s) => typeof s.level === "number");
               return (
-                <div key={g.group}>
+                <div key={group}>
                   <h3 className="mb-3 font-(family-name:--mono) text-[10px] uppercase tracking-[0.16em] text-(--dim)">
-                    {g.group}
+                    {group}
                   </h3>
                   {leveled ? (
                     <div className="space-y-2.5">
@@ -223,7 +229,7 @@ export function PlanetCard({
                       className="group flex items-center justify-between border-b border-(--line) py-3.5 last:border-b-0"
                     >
                       <span className="font-(family-name:--display) text-[1.35rem] font-semibold text-(--ink)">
-                        {l.label}
+                        {t(l.label, locale)}
                       </span>
                       <span
                         className="font-(family-name:--mono) text-[11px] transition-transform group-hover:translate-x-1"

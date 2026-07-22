@@ -1,4 +1,7 @@
-export default function HeroSection() {
+import { type Locale } from "@/lib/planets";
+
+export default function HeroSection({ locale }: { locale: Locale }) {
+  const fr = locale === "fr";
   return (
     <header className="pt-18.5 pb-6">
 
@@ -7,7 +10,7 @@ export default function HeroSection() {
       </h1>
 
       <p className="text-center uppercase tracking-[0.16em] text-[0.82rem] font-medium text-(--ink-dim) mt-3">
-        Data &amp; Intelligence Artificielle
+        {fr ? "Data & Intelligence Artificielle" : "Data & Artificial Intelligence"}
       </p>
 
       <p className="font-(family-name:--display) italic text-[1.32rem] leading-[1.35] text-center text-(--ink) max-w-[22em] mx-auto mt-5">
@@ -22,7 +25,7 @@ export default function HeroSection() {
       </p>
 
       <div className="flex flex-col items-center gap-2 mt-9 text-(--dim) font-(family-name:--mono) text-[10px] tracking-[0.2em] uppercase">
-        <span>Parcourir le relevé</span>
+        <span>{fr ? "Parcourir le relevé" : "Browse the survey"}</span>
         <svg
           width="14" height="14" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="2" aria-hidden="true"
