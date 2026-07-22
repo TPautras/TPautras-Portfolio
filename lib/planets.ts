@@ -327,8 +327,8 @@ export const PLANETS: Planet[] = [
       icon: "briefcase",
       headline: { fr: "Expériences", en: "Experience" },
       summary: {
-        fr: "Les missions où j'ai appris à traiter des données pour de vrai.",
-        en: "The missions where I learned to handle real data.",
+        fr: "Stages, startups et associatif — là où j'ai construit, livré et pris des responsabilités.",
+        en: "Internships, startups and student orgs — where I built, shipped and took on responsibility.",
       },
       accent: "#ff8360",
       star: { x: 262, y: 60 },
@@ -336,30 +336,75 @@ export const PLANETS: Planet[] = [
     orbit: { radius: 12, size: 1.1, speed: 0.15, tilt: 0.03, texture: "/textures/mars.jpg" },
     experiences: [
       {
-        role: { fr: "Stagiaire data scientist", en: "Data science intern" },
-        org: "NomEntreprise SAS",
+        role: { fr: "Analyste cybersécurité (stage)", en: "Cybersecurity analyst (intern)" },
+        org: "Login Sécurité",
         period: { fr: "Juin – Août 2025", en: "June – Aug 2025" },
         description: {
-          fr: "Nettoyage et modélisation d'un jeu de 2 M de lignes ; mise en production d'un modèle de prévision qui a réduit l'erreur de 18 %.",
-          en: "Cleaned and modeled a 2M-row dataset; shipped a forecasting model that cut error by 18%.",
+          fr: "Stage d'analyste en cybersécurité à Saint-Cloud : analyse et suivi de la sécurité des systèmes.",
+          en: "Cybersecurity analyst internship in Saint-Cloud: analysis and monitoring of systems security.",
         },
       },
       {
-        role: { fr: "Responsable pôle IA", en: "AI team lead" },
-        org: "Club data de l'école",
-        period: { fr: "2024 – aujourd'hui", en: "2024 – present" },
+        role: { fr: "Développeur web (stage)", en: "Web developer (intern)" },
+        org: "SINFIN",
+        period: { fr: "Juin – Juil. 2024", en: "June – Jul. 2024" },
         description: {
-          fr: "Animation de sessions Kaggle, encadrement de 10 étudiants, organisation d'un hackathon interne de 48 h.",
-          en: "Ran Kaggle sessions, mentored 10 students, organized a 48-hour internal hackathon.",
+          fr: "Développement web avec le framework Symfony et PHP, à Troyes.",
+          en: "Web development with the Symfony framework and PHP, in Troyes.",
         },
       },
       {
-        role: { fr: "Tuteur en programmation", en: "Programming tutor" },
-        org: "École d'ingénieurs XYZ",
-        period: { fr: "2023 – 2024", en: "2023 – 2024" },
+        role: { fr: "Développeur fullstack", en: "Fullstack developer" },
+        org: "Boiteauxlettres",
+        period: { fr: "à préciser", en: "TBD" },
         description: {
-          fr: "Python et statistiques auprès des étudiants de 1ʳᵉ année : TP, débogage, préparation aux examens.",
-          en: "Python and statistics for first-year students: labs, debugging, exam prep.",
+          fr: "Développement fullstack d'une application métier de bout en bout : modélisation de la logique business, API back-end et interface, jusqu'à la mise en production.",
+          en: "End-to-end fullstack development of a business application: modeling the business logic, back-end API and interface, through to production.",
+        },
+      },
+      {
+        role: { fr: "Développeur fullstack", en: "Fullstack developer" },
+        org: "Finanshely",
+        period: { fr: "à préciser", en: "TBD" },
+        description: {
+          fr: "Conception et livraison de fonctionnalités orientées métier, du schéma de données à l'interface, en itérant au contact des besoins produit.",
+          en: "Designed and shipped business-oriented features, from data schema to interface, iterating against real product needs.",
+        },
+      },
+      {
+        role: { fr: "Responsable RSE", en: "CSR lead" },
+        org: "DeVinci Junior",
+        period: { fr: "Juil. 2024 – aujourd'hui", en: "Jul. 2024 – present" },
+        description: {
+          fr: "Junior-Entreprise du Pôle Léonard de Vinci : responsable RSE, après un premier rôle de chargé des systèmes d'information.",
+          en: "Léonard de Vinci Junior Enterprise: CSR lead, after an initial role handling information systems.",
+        },
+      },
+      {
+        role: { fr: "Président", en: "President" },
+        org: "La Joute de Vinci",
+        period: { fr: "Oct. 2023 – aujourd'hui", en: "Oct. 2023 – present" },
+        description: {
+          fr: "Association d'éloquence : d'abord membre, puis président, aujourd'hui membre d'honneur. Prise de parole en public et animation de joutes oratoires.",
+          en: "Public-speaking society: first a member, then president, now honorary member. Public speaking and running debate jousts.",
+        },
+      },
+      {
+        role: { fr: "Membre du conseil d'administration", en: "Board member" },
+        org: "BNEM",
+        period: { fr: "Mai 2025 – aujourd'hui", en: "May 2025 – present" },
+        description: {
+          fr: "Bureau National des Étudiants en école de Management : participation à la gouvernance de l'association étudiante nationale.",
+          en: "National Union of Management-School Students: contributing to the governance of the national student organization.",
+        },
+      },
+      {
+        role: { fr: "Membre", en: "Member" },
+        org: "DaVinciCode",
+        period: { fr: "Sept. 2024 – Sept. 2025", en: "Sep. 2024 – Sep. 2025" },
+        description: {
+          fr: "Membre de l'association tech et programmation du Pôle Léonard de Vinci.",
+          en: "Member of the Léonard de Vinci tech and programming student club.",
         },
       },
     ],
