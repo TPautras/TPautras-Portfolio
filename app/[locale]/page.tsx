@@ -27,7 +27,7 @@ export default async function Home({ params }: Props) {
         {mobileCheck ? (
           <MobilePortfolio locale={locale as Locale} />
         ) : (
-          <SolarSystem/>
+          <SolarSystem locale={locale as Locale}/>
         )}
       </main>
     </div>

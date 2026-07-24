@@ -2,17 +2,25 @@
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 import { EffectComposer, Bloom } from "@react-three/postprocessing"
+import { useRef } from "react"
+import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import Starfields from "./Starfield"
 import Planet from "./Planet"
 import Sun from "./Sun"
+import CameraRig from "./CameraRig"
+import SectionOverlay from "@/components/ui/SectionOverlay"
+import type { Locale } from "@/lib/planets"
 
-export default function SolarSystem(){
+export default function SolarSystem({ locale }: { locale: Locale }){
+    const controlsRef = useRef<OrbitControlsImpl>(null)
+
     return (
         <div className="h-dvh w-full">
             <Canvas camera={{ position: [0, 8, 18], fov: 50 }}>
                 <color attach='background' args={['black']}/>
                 <ambientLight intensity={0.08}/>
-                <OrbitControls/>
+                <OrbitControls ref={controlsRef} enableDamping dampingFactor={0.08} makeDefault/>
+                <CameraRig controlsRef={controlsRef}/>
                 <Starfields/>
                 <Sun/>
                 <Planet/>
@@ -25,6 +33,7 @@ export default function SolarSystem(){
                     />
                 </EffectComposer>
             </Canvas>
+            <SectionOverlay locale={locale}/>
         </div>
     )
 }
