@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { isMobile } from "@/utils/isMobile";
 import MobilePortfolio from "@/components/fallback/MobilePortfolio";
 import type { Locale } from "@/lib/planets";
+import SolarSystem from "@/components/scene/SolarSystem";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -21,12 +22,12 @@ export default async function Home({ params }: Props) {
   const userAgent = (await headers()).get("user-agent") || "";
   const mobileCheck = isMobile(userAgent);
   return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between sm:items-start">
+    <div className="flex min-h-dvh flex-col items-center justify-center font-sans">
+      <main className="flex w-full flex-1 flex-col items-center justify-between sm:items-start">
         {mobileCheck ? (
           <MobilePortfolio locale={locale as Locale} />
         ) : (
-          <div> test</div>
+          <SolarSystem/>
         )}
       </main>
     </div>
