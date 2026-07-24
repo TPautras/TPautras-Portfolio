@@ -90,6 +90,7 @@ export type SectionContent = {
 };
 
 export type Planet = {
+  id: number;
   content: SectionContent;
   orbit: OrbitConfig;
   body?: L;
@@ -126,6 +127,7 @@ export const SUN = {
 export const PLANETS: Planet[] = [
   // 1 — PROJETS -------------------------------------------------------------
   {
+    id: 1,
     content: {
       id: "projets",
       label: { fr: "Projets", en: "Projects" },
@@ -320,6 +322,7 @@ export const PLANETS: Planet[] = [
 
   // 2 — EXPÉRIENCES ---------------------------------------------------------
   {
+    id: 2,
     content: {
       id: "experiences",
       label: { fr: "Expériences", en: "Experience" },
@@ -412,6 +415,7 @@ export const PLANETS: Planet[] = [
 
   // 3 — FORMATION (nouvelle) ------------------------------------------------
   {
+    id:3,
     content: {
       id: "formation",
       label: { fr: "Formation", en: "Education" },
@@ -481,6 +485,7 @@ export const PLANETS: Planet[] = [
 
   // 4 — COMPÉTENCES ---------------------------------------------------------
   {
+    id: 4,
     content: {
       id: "competences",
       label: { fr: "Compétences", en: "Skills" },
@@ -527,6 +532,7 @@ export const PLANETS: Planet[] = [
 
   // 5 — CONTACT -------------------------------------------------------------
   {
+    id: 5,
     content: {
       id: "contact",
       label: { fr: "Contact", en: "Contact" },
